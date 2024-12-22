@@ -1,0 +1,4 @@
+fastapi[all]
+pydantic==2.10.4
+selenium==4.27.1
+beautifulsoup4==4.12.3
