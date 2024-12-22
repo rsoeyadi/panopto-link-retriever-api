@@ -1,27 +1,7 @@
-# Deploy FastAPI on Render
+# Panopto Link Retriever
 
-Use this repo as a template to deploy a Python [FastAPI](https://fastapi.tiangolo.com) service on Render.
+The frontend is accessible at [panopto.vercel.app](https://panopto.vercel.app)
 
-See https://render.com/docs/deploy-fastapi or follow the steps below:
+This is the FastAPI backend to parse through Juilliard event links so students/staff can quickly retrieve their performance recordings. On Juilliard's event pages, when a livestream is over, the video seemingly disappears, but I noticed it's hidden in the HTML. This API utilizes Selenium and BeautifulSoup to parse through that HTML and retrieve the links. It exposes a single API endpoint, `/submit-url`, which accepts a POST request with a JSON payload containing the `url` field.
 
-## Manual Steps
-
-1. You may use this repository directly or [create your own repository from this template](https://github.com/render-examples/fastapi/generate) if you'd like to customize the code.
-2. Create a new Web Service on Render.
-3. Specify the URL to your new repository or this repository.
-4. Render will automatically detect that you are deploying a Python service and use `pip` to download the dependencies.
-5. Specify the following as the Start Command.
-
-    ```shell
-    uvicorn main:app --host 0.0.0.0 --port $PORT
-    ```
-
-6. Click Create Web Service.
-
-Or simply click:
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/render-examples/fastapi)
-
-## Thanks
-
-Thanks to [Harish](https://harishgarg.com) for the [inspiration to create a FastAPI quickstart for Render](https://twitter.com/harishkgarg/status/1435084018677010434) and for some sample code!
+This is an application that consists of a FastAPI backend and a React frontend built with Vite. It is designed to retrieve Panopto video links from Juilliard event pages. The backend is powered by FastAPI and utilizes Selenium and BeautifulSoup to scrape Panopto links from Juilliard event pages. It exposes a single API endpoint, `/submit-url`, which accepts a POST request with a JSON payload containing the `url` field. The frontend validates the input, communicates with this API, and displays the retrieved Panopto link if available, along with error handling for invalid URLs or unavailable recordings.
